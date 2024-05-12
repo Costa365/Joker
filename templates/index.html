@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/static/index.css">
   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
   <title>Joker</title>
+  <link rel="stylesheet" href="/static/index.css"/>
 </head>
 <body>
-  <div class="container">
-    <h1>Joke</h1>
-    <p id="joke">...</p>
-    <button 
+  <div class="header">
+    <img src="/static/banner.png" alt="Joker">
+  </div>
+  <div class="content">
+    <div><p id="joke">...</p></div>
+  </div>
+  <div class="get-another">
+    <button
       hx-get="/joke"
       hx-target="#joke"
       hx-trigger="click, load"
       hx-swap="innerHTML">
-      Get Next Joke
+      Get Another Joke
     </button>
+  </div>
+  <div class="footer">
+    Made with:&nbsp;<a href="https://htmx.org/">HTMX</a> &nbsp; | &nbsp; <a href="https://go.dev/">Go</a>
   </div>
 </body>
