@@ -11,3 +11,5 @@ Install Go and run with:
 It can also be run using Docker:
 
 ```docker compose up```
+
+Can be accessed at [joker.costa365.site](https://joker.costa365.site/).

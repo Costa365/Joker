@@ -1,0 +1,16 @@
+version: '3'
+services:
+  server:
+    restart: unless-stopped
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - nginx-proxy
+    environment:
+      - VIRTUAL_HOST=joker.costa365.site
+      - PORT=8080
+
+networks:
+  nginx-proxy:
+    external: true
