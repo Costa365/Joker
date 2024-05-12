@@ -7,3 +7,7 @@ Gets a random joke from [icanhazdadjoke](https://icanhazdadjoke.com) and display
 Install Go and run with: 
 
 ```go run main.go```
+
+It can also be run using Docker:
+
+```docker compose up```
