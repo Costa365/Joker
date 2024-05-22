@@ -10,6 +10,8 @@ services:
     environment:
       - VIRTUAL_HOST=joker.costa365.site
       - PORT=8080
+      - DB_URL=libsql://site.turso.io
+      - DB_TOKEN=token
 
 networks:
   nginx-proxy:

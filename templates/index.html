@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script type="text/javascript">
+    function clearVote() {
+      document.getElementById("vote").innerHTML = "Please rate this joke";
+    }
+  </script>
   <title>Joker</title>
   <link rel="stylesheet" href="/static/index.css"/>
 </head>
@@ -14,7 +19,10 @@
   <div class="content">
     <div><p id="joke">...</p></div>
   </div>
-  <div class="get-another">
+  <div class="content">
+    <p id="vote">Please rate this joke</p>
+  </div>
+  <div class="get-another" onclick="clearVote()">
     <button
       hx-get="/joke"
       hx-target="#joke"

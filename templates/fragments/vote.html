@@ -1,0 +1,17 @@
+{{if gt . 0}}
+  You rated this joke 
+  {{if eq . 1}}
+  😒
+  {{else if eq . 2}}
+  😑
+  {{else if eq . 3}}
+  🙂
+  {{else if eq . 4}}
+  😆
+  {{else if eq . 5}}
+  🤣
+  {{end}}
+Thanks!
+{{else}}
+  Please rate this joke!
+{{end}}

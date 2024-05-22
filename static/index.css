@@ -60,3 +60,18 @@ button {
   cursor: pointer;
   border-radius: 4px;
 }
+
+.vote-button {
+  background-color: #322d23;
+  border: none;
+  color: white;
+  padding: 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 32px;
+  cursor: pointer;
+  border-radius: 12px;
+  margin: 5px;
+}
+
