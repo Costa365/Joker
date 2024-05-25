@@ -127,6 +127,10 @@ func main() {
 		}
 	})
 
+	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./static/favicon.ico")
+	})
+
 	dbInit()
 
 	log.Println("Starting server on :8080...")
