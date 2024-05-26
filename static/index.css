@@ -33,14 +33,14 @@ div {
 
 .content {
   background-color: #0F011E;
-  min-height: 80px;
+  height: 120px;
   font-size: larger;
   color: yellow;
 }
 
 .votes {
   background-color: #0F011E;
-  height: 100px;
+  height: 120px;
   font-size: larger;
   color: rgb(112, 49, 69);
 }
