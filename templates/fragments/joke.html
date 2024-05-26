@@ -1,7 +1,7 @@
 <div
   hx-trigger="load"
   hx-target="#votes"
-  hx-get="/votes"
+  hx-post="/votes"
   hx-vals='{"id": "{{ .Id }}"}'>
   {{ .Joke }}
 </div>
