@@ -17,18 +17,19 @@ div {
   border-radius: 10px;
 }
 
-div > img {
-  width: auto;
-  height: auto;
-  max-height: 100%;
-  max-width: 98%;
-  border-radius: 10px;
+.header {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  background-color: #0F011E;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  border-radius: 6px;
+  flex-wrap: wrap;
 }
 
-.header {
-  display: block;
-  overflow: hidden;
-  width: 100%;
+.header-logo {
+  max-height: 120px;
 }
 
 .content {
@@ -44,10 +45,24 @@ div > img {
 }
 
 .footer {
-  color: white;
-  margin-top: 50px;
-  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 5px;
   background-color: #0F011E;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  border-radius: 6px;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  padding: 1%;
+  width: 100px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  opacity: 0.3;
 }
 
 button {
