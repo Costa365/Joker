@@ -1,0 +1,35 @@
+<div>
+  Please rate this joke!
+</div>
+<div>
+  <button class="vote-button"
+    hx-post="/vote"
+    hx-target="#votes"
+    hx-vals='{"id": "{{ . }}", "vote": "5"}'>
+    🤣
+  </button>
+  <button class="vote-button"
+    hx-post="/vote"
+    hx-target="#votes"
+    hx-vals='{"id": "{{ . }}", "vote": "4"}'>
+    😆
+  </button>
+  <button class="vote-button"
+    hx-post="/vote"
+    hx-target="#votes"
+    hx-vals='{"id": "{{ . }}", "vote": "3"}'>
+    🙂
+  </button>
+  <button class="vote-button"
+    hx-post="/vote"
+    hx-target="#votes"
+    hx-vals='{"id": "{{ . }}", "vote": "2"}'>
+    😑
+  </button>
+  <button class="vote-button"
+    hx-post="/vote"
+    hx-target="#votes"
+    hx-vals='{"id": "{{ . }}", "vote": "1"}'>
+    😒
+  </button>
+</div>

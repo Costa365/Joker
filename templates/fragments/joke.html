@@ -1,43 +1,7 @@
-{{ .Joke }}
-<div>
-  <button class="vote-button"
-    hx-post="/vote"
-    hx-target="#vote"
-    hx-trigger="click"
-    hx-swap="innerHTML"
-    hx-vals='{"id": "{{ .Id }}", "vote": "5"}'>
-    🤣
-  </button>
-  <button class="vote-button"
-    hx-post="/vote"
-    hx-target="#vote"
-    hx-trigger="click"
-    hx-swap="innerHTML"
-    hx-vals='{"id": "{{ .Id }}", "vote": "4"}'>
-    😆
-  </button>
-  <button class="vote-button"
-    hx-post="/vote"
-    hx-target="#vote"
-    hx-trigger="click"
-    hx-swap="innerHTML"
-    hx-vals='{"id": "{{ .Id }}", "vote": "3"}'>
-    🙂
-  </button>
-  <button class="vote-button"
-    hx-post="/vote"
-    hx-target="#vote"
-    hx-trigger="click"
-    hx-swap="innerHTML"
-    hx-vals='{"id": "{{ .Id }}", "vote": "2"}'>
-    😑
-  </button>
-  <button class="vote-button"
-    hx-post="/vote"
-    hx-target="#vote"
-    hx-trigger="click"
-    hx-swap="innerHTML"
-    hx-vals='{"id": "{{ .Id }}", "vote": "1"}'>
-    😒
-  </button>
+<div
+  hx-trigger="load"
+  hx-target="#votes"
+  hx-get="/votes"
+  hx-vals='{"id": "{{ .Id }}"}'>
+  {{ .Joke }}
 </div>

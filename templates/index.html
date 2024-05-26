@@ -4,11 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-  <script type="text/javascript">
-    function clearVote() {
-      document.getElementById("vote").innerHTML = "Please rate this joke";
-    }
-  </script>
   <title>Joker</title>
   <link rel="stylesheet" href="/static/index.css"/>
 </head>
@@ -19,10 +14,10 @@
   <div class="content">
     <div><p id="joke">...</p></div>
   </div>
-  <div class="content">
-    <p id="vote">Please rate this joke</p>
+  <div class="votes">
+    <div><p id="votes"></p></div>
   </div>
-  <div class="get-another" onclick="clearVote()">
+  <div class="get-another">
     <button
       hx-get="/joke"
       hx-target="#joke"
@@ -31,7 +26,6 @@
       Get Another Joke
     </button>
   </div>
-
   <div class="footer">
     <a href="https://github.com/Costa365/Joker" target="_blank"><img class="footer-logo" src="/static/github-logo.png" alt="GitHub"></a>
     <a href="https://htmx.org/" target="_blank"><img class="footer-logo" src="/static/htmx-logo.png" alt="Htmx"></a>

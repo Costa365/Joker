@@ -12,8 +12,7 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
-  margin: 1%;
+  margin: 10px;
   border-radius: 10px;
 }
 
@@ -39,13 +38,20 @@ div {
   color: yellow;
 }
 
+.votes {
+  background-color: #0F011E;
+  height: 100px;
+  font-size: larger;
+  color: rgb(112, 49, 69);
+}
+
 .get-another {
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
 .footer {
-  margin-top: 20px;
+  margin-top: 60px;
   margin-bottom: 5px;
   background-color: #0F011E;
   height: fit-content;

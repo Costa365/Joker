@@ -129,6 +129,24 @@ func main() {
 		}
 	})
 
+	http.HandleFunc("/votes", func(w http.ResponseWriter, r *http.Request) {
+		t, err := template.ParseFiles("./templates/fragments/votes.html")
+
+		if err != nil {
+			log.Println(err)
+			return
+		}
+		if t == nil {
+			panic("template.ParseFiles returned nil")
+		}
+		id := r.PostFormValue("id")
+
+		err = t.Execute(w, id)
+		if err != nil {
+			panic(err)
+		}
+	})
+
 	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "./static/favicon.ico")
 	})
