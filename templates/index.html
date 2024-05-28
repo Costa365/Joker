@@ -12,13 +12,14 @@
     <img class="header-logo" src="/static/banner.png" alt="Joker">
   </div>
   <div class="content">
-    <div><p id="joke">...</p></div>
+    <div><p id="joke"><img src="/static/spinner.gif"></p></div>
   </div>
   <div class="votes">
     <div><p id="votes"></p></div>
   </div>
   <div class="get-another">
     <button
+      id="nextJokeButton"
       hx-get="/joke"
       hx-target="#joke"
       hx-trigger="click, load"
@@ -33,5 +34,14 @@
     <a href="https://turso.tech/" target="_blank"><img class="footer-logo" src="/static/turso-logo.png" alt="Turso"></a>
     <a href="https://www.docker.com/" target="_blank"><img class="footer-logo" src="/static/docker-logo.png" alt="Docker"></a>
   </div>
+
+  <script>
+    document.getElementById('nextJokeButton').addEventListener('click', function() {
+      var jokeElement = document.getElementById('joke');
+      var votesElement = document.getElementById('votes');
+      jokeElement.innerHTML = '<img src="/static/spinner.gif">';
+      votesElement.innerHTML = '';
+    });
+  </script>
 
 </body>

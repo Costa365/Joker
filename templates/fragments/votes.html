@@ -3,33 +3,50 @@
 </div>
 <div>
   <button class="vote-button"
+    id="voteButton5"
     hx-post="/vote"
     hx-target="#votes"
     hx-vals='{"id": "{{ . }}", "vote": "5"}'>
     🤣
   </button>
   <button class="vote-button"
+    id="voteButton4"
     hx-post="/vote"
     hx-target="#votes"
     hx-vals='{"id": "{{ . }}", "vote": "4"}'>
     😆
   </button>
   <button class="vote-button"
+    id="voteButton3"
     hx-post="/vote"
     hx-target="#votes"
     hx-vals='{"id": "{{ . }}", "vote": "3"}'>
     🙂
   </button>
   <button class="vote-button"
+    id="voteButton2"
     hx-post="/vote"
     hx-target="#votes"
     hx-vals='{"id": "{{ . }}", "vote": "2"}'>
     😑
   </button>
   <button class="vote-button"
+    id="voteButton1"
     hx-post="/vote"
     hx-target="#votes"
     hx-vals='{"id": "{{ . }}", "vote": "1"}'>
     😒
   </button>
 </div>
+
+<script>
+  if(typeof voteButtons === 'undefined') {
+    let voteButtons = document.querySelectorAll('[id^="voteButton"]')
+    voteButtons.forEach(voteButton => {
+      voteButton.addEventListener('click', function() {
+        var votesElement = document.getElementById('votes');
+        votesElement.innerHTML = '<img src="/static/spinner.gif">';
+      });
+    });
+  }
+</script>
