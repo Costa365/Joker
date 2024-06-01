@@ -6,6 +6,7 @@
     id="voteButton5"
     hx-post="/vote"
     hx-target="#votes"
+    hx-disabled-elt="#nextJokeButton"
     hx-vals='{"id": "{{ . }}", "vote": "5"}'>
     🤣
   </button>
@@ -13,6 +14,7 @@
     id="voteButton4"
     hx-post="/vote"
     hx-target="#votes"
+    hx-disabled-elt="#nextJokeButton"
     hx-vals='{"id": "{{ . }}", "vote": "4"}'>
     😆
   </button>
@@ -20,6 +22,7 @@
     id="voteButton3"
     hx-post="/vote"
     hx-target="#votes"
+    hx-disabled-elt="#nextJokeButton"
     hx-vals='{"id": "{{ . }}", "vote": "3"}'>
     🙂
   </button>
@@ -27,6 +30,7 @@
     id="voteButton2"
     hx-post="/vote"
     hx-target="#votes"
+    hx-disabled-elt="#nextJokeButton"
     hx-vals='{"id": "{{ . }}", "vote": "2"}'>
     😑
   </button>
@@ -34,6 +38,7 @@
     id="voteButton1"
     hx-post="/vote"
     hx-target="#votes"
+    hx-disabled-elt="#nextJokeButton"
     hx-vals='{"id": "{{ . }}", "vote": "1"}'>
     😒
   </button>
@@ -44,8 +49,7 @@
     let voteButtons = document.querySelectorAll('[id^="voteButton"]')
     voteButtons.forEach(voteButton => {
       voteButton.addEventListener('click', function() {
-        var votesElement = document.getElementById('votes');
-        votesElement.innerHTML = '<img src="/static/spinner.gif">';
+        document.getElementById('votes').innerHTML = '<img src="/static/spinner.gif">';
       });
     });
   }
