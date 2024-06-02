@@ -43,7 +43,7 @@ div {
   background-color: #0F011E;
   height: 120px;
   font-size: larger;
-  color: rgb(112, 49, 69);
+  color: rgb(221, 71, 118);
 }
 
 .get-another {
@@ -60,6 +60,7 @@ div {
   justify-content: center;
   border-radius: 6px;
   flex-wrap: wrap;
+  padding: 10px;
 }
 
 .footer-logo {
@@ -87,8 +88,8 @@ button {
 
 button:disabled,
 button[disabled]{
-  background-color: #f000f0;
-  color: #e000e0;
+  background-color: #402040;
+  color: #603060;
 }
 
 .vote-button {
