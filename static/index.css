@@ -34,7 +34,7 @@ div {
 
 .content {
   background-color: #0F011E;
-  height: 120px;
+  height: auto;
   font-size: larger;
   color: yellow;
 }
