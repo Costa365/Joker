@@ -34,6 +34,7 @@ func dbInit() {
 		_, err := db.Exec(`
 						CREATE TABLE IF NOT EXISTS jokes (
 							id integer primary key,
+							timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
 							joke_id TEXT,
 							vote INTEGER,
 							ip TEXT
@@ -90,13 +91,3 @@ func getJokeAverageVote(jokeID string) (int, int) {
 
 	return 0, 0
 }
-
-/*for rows.Next() {
-	var joke Joke
-
-	if err := rows.Scan(&joke.ID, &joke.JokeID, &joke.Vote, &joke.IP); err != nil {
-		fmt.Println("Error scanning row:", err)
-		return
-	}
-	fmt.Println(joke.ID, joke.Vote, joke.IP)
-}*/

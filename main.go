@@ -121,7 +121,14 @@ func main() {
 		id := r.PostFormValue("id")
 		strvote := r.PostFormValue("vote")
 		vote, err := strconv.Atoi(strvote)
-		addJokeVote(id, vote, ReadUserIP(r))
+
+		if err != nil {
+			log.Println(err)
+			return
+		}
+
+		// Run addJokeVote in a goroutine so that it doesn't block
+		go addJokeVote(id, vote, ReadUserIP(r))
 
 		err = t.Execute(w, vote)
 		if err != nil {
