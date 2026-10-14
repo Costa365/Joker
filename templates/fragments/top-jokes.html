@@ -1,0 +1,20 @@
+{{if .}}
+<ol class="leaderboard-list">
+  {{range .}}
+  <li class="ranked-joke {{if eq .Rank 1}}ranked-joke-winner{{end}}">
+    <span class="joke-rank" aria-label="Rank {{.Rank}}">{{if eq .Rank 1}}<span aria-hidden="true">♛</span>{{else}}{{printf "%02d" .Rank}}{{end}}</span>
+    <article class="ranked-joke-content">
+      {{if eq .Rank 1}}<span class="winner-label">THE CROWD FAVOURITE</span>{{end}}
+      {{if .Text}}<p>{{.Text}}</p>{{else}}<p class="joke-unavailable">This joke is taking a breather. <a href="https://icanhazdadjoke.com/j/{{.ID}}" target="_blank" rel="noopener">Read the original ↗</a></p>{{end}}
+    </article>
+    <aside class="joke-score" aria-label="Average rating {{score .Average}} out of 5 from {{.Votes}} votes">
+      <span class="score-number">{{score .Average}}<span> / 5</span></span>
+      <span class="score-stars" aria-hidden="true"><span style="width: {{percent .Average}}%">★★★★★</span>★★★★★</span>
+      <span class="score-votes">{{.Votes}} {{if eq .Votes 1}}vote{{else}}votes{{end}}</span>
+    </aside>
+  </li>
+  {{end}}
+</ol>
+{{else}}
+<p class="leaderboard-empty"><span aria-hidden="true">✦</span> A great laugh starts with you.<br><small>Rate a joke above to put the first smile on the board.</small></p>
+{{end}}

@@ -69,6 +69,8 @@ func ReadUserIP(r *http.Request) string {
 }
 
 func main() {
+	http.HandleFunc("/top-jokes", topJokesHandler)
+
 	http.Handle("/static/",
 		http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 

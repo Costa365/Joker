@@ -112,3 +112,80 @@ button[disabled]{
   margin: 5px;
 }
 
+
+/* Shared panel styling */
+.header,
+.footer,
+.content,
+.votes,
+.leaderboard {
+  background-color: #0F011E;
+  border: 1px solid #38204d;
+  border-radius: 16px;
+}
+
+/* Top rated jokes */
+.leaderboard {
+  margin: 32px 10px 0;
+  color: #f5efff;
+  background: #0f011e;
+  overflow: hidden;
+}
+.leaderboard summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 22px 52px;
+  cursor: pointer;
+  list-style: none;
+  background: #0F011E;
+}
+.leaderboard summary::-webkit-details-marker { display: none; }
+.leaderboard summary:hover .leaderboard-toggle { color: #f5efff; }
+.leaderboard-icon { font-size: 36px; color: #f5ca72; }
+.leaderboard-title { display: block; }
+.leaderboard-title { font-size: 25px; font-weight: bold; letter-spacing: -.5px; }
+.leaderboard-toggle { position: absolute; right: 24px; color: #c4a7df; font-size: 28px; }
+.leaderboard[open] .leaderboard-toggle { transform: rotate(45deg); }
+.leaderboard-body { padding: 0 24px 24px; }
+.leaderboard-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; }
+.leaderboard-heading p { margin: 0; font-size: 13px; line-height: 1.7; }
+.leaderboard-heading p span { color: #b3a1c5; }
+.leaderboard-refresh { padding: 9px 13px; background: #241333; border: 1px solid #513263; font-size: 12px; border-radius: 8px; }
+.leaderboard-refresh:hover { background: #39204b; }
+.leaderboard-refresh:disabled { color: #c4a7df; cursor: wait; }
+.leaderboard-loading { display: none; color: #c4a7df; font-size: 13px; }
+.leaderboard-loading.htmx-request { display: block; }
+.leaderboard #topJokes { display: block; margin: 0; border-radius: 0; }
+.leaderboard-list { padding: 0; margin: 0; list-style: none; display: grid; gap: 10px; }
+.ranked-joke { display: grid; grid-template-columns: 34px 1fr 94px; align-items: center; gap: 18px; padding: 20px; border: 1px solid #30203e; border-radius: 12px; background: #180d25; }
+.ranked-joke-winner { border-color: #806039; background: linear-gradient(120deg, #302033, #1b1024 70%); }
+.joke-rank { color: #b39bc9; font-size: 18px; font-weight: bold; font-variant-numeric: tabular-nums; }
+.ranked-joke-winner .joke-rank { color: #f5ca72; font-size: 32px; }
+.winner-label { font-size: 9px; letter-spacing: 1.6px; color: #f5ca72; }
+.ranked-joke-content { min-width: 0; }
+.ranked-joke-content p { margin: 0; font-size: 15px; line-height: 1.65; overflow-wrap: anywhere; white-space: pre-line; }
+.winner-label + p { margin-top: 7px; }
+.joke-score { display: grid; justify-items: end; gap: 5px; }
+.score-number { font-size: 23px; font-weight: bold; font-variant-numeric: tabular-nums; }
+.score-number > span { font-size: 11px; font-weight: normal; color: #b3a1c5; }
+.score-stars { position: relative; color: #594363; font-size: 16px; letter-spacing: 1px; line-height: 1; white-space: nowrap; }
+.score-stars > span { position: absolute; top: 0; left: 0; overflow: hidden; color: #f5ca72; }
+.score-votes { color: #b3a1c5; font-size: 11px; }
+.leaderboard-empty { text-align: center; padding: 32px 12px; line-height: 1.8; }
+.leaderboard-empty > span { display: block; font-size: 32px; color: #f5ca72; margin-bottom: 12px; }
+.leaderboard-empty small, .joke-unavailable { color: #b3a1c5; }
+.leaderboard summary:focus-visible, .leaderboard button:focus-visible, .leaderboard a:focus-visible { outline: 2px solid #f5ca72; outline-offset: -3px; }
+@media (max-width: 560px) {
+  .leaderboard summary { padding: 18px 52px; gap: 12px; }
+  .leaderboard-title { font-size: 22px; }
+  .leaderboard-body { padding: 0 14px 14px; }
+  .leaderboard-heading p { font-size: 11px; }
+  .ranked-joke { grid-template-columns: 25px 1fr; gap: 12px; padding: 16px 12px; }
+  .ranked-joke-content p { font-size: 14px; }
+  .joke-score { grid-column: 2; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .score-number { font-size: 19px; }
+  .score-stars { font-size: 14px; }
+}
