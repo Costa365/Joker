@@ -1,24 +1,24 @@
 <div>
-  Please rate this joke!
+  How was that one?
 </div>
 <div>
-  <button class="vote-button" id="voteButton5" hx-post="/vote" hx-target="#votes" hx-disabled-elt="#nextJokeButton"
+  <button class="vote-button" id="voteButton5" aria-label="5 out of 5 — Hilarious" title="Hilarious" hx-post="/vote" hx-target="#votes" hx-disabled-elt="#nextJokeButton"
     hx-vals='{"id": "{{ . }}", "vote": "5"}'>
     🤣
   </button>
-  <button class="vote-button" id="voteButton4" hx-post="/vote" hx-target="#votes" hx-disabled-elt="#nextJokeButton"
+  <button class="vote-button" id="voteButton4" aria-label="4 out of 5 — Very funny" title="Very funny" hx-post="/vote" hx-target="#votes" hx-disabled-elt="#nextJokeButton"
     hx-vals='{"id": "{{ . }}", "vote": "4"}'>
     😆
   </button>
-  <button class="vote-button" id="voteButton3" hx-post="/vote" hx-target="#votes" hx-disabled-elt="#nextJokeButton"
+  <button class="vote-button" id="voteButton3" aria-label="3 out of 5 — Made me smile" title="Made me smile" hx-post="/vote" hx-target="#votes" hx-disabled-elt="#nextJokeButton"
     hx-vals='{"id": "{{ . }}", "vote": "3"}'>
     🙂
   </button>
-  <button class="vote-button" id="voteButton2" hx-post="/vote" hx-target="#votes" hx-disabled-elt="#nextJokeButton"
+  <button class="vote-button" id="voteButton2" aria-label="2 out of 5 — Not much" title="Not much" hx-post="/vote" hx-target="#votes" hx-disabled-elt="#nextJokeButton"
     hx-vals='{"id": "{{ . }}", "vote": "2"}'>
     😑
   </button>
-  <button class="vote-button" id="voteButton1" hx-post="/vote" hx-target="#votes" hx-disabled-elt="#nextJokeButton"
+  <button class="vote-button" id="voteButton1" aria-label="1 out of 5 — Not for me" title="Not for me" hx-post="/vote" hx-target="#votes" hx-disabled-elt="#nextJokeButton"
     hx-vals='{"id": "{{ . }}", "vote": "1"}'>
     😒
   </button>
