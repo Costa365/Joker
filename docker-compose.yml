@@ -5,5 +5,6 @@ services:
     ports:
      - "8080:8080"
     environment:
-      - DB_URL=libsql://site.turso.io
-      - DB_TOKEN=token
+      - DB_URL=libsql://jokes-costa365.turso.io
+      - DB_TOKEN=eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3MjUxNzY3NTcsImlkIjoiYTQ0MzQ0NmItMDE4Ni00MDE4LTgwZjctY2U4YzQzOGFjNzJiIn0.RGh4VseW9ZuWPCzIHxj08B-Jul0y5fXQRjhfzt-5hCPRnAULWdkmU29bmbOD_EDsp_Nd_VbTpaJp925h8xrXBA
+

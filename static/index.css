@@ -203,10 +203,10 @@ a { color: var(--muted); }
 .lounge { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 28px; padding: 40px 0 48px; }
 .joke-stage { text-align: center; padding: 12px 10px; min-width: 0; width: 100%; max-width: 780px; margin-inline: auto; }
 .eyebrow { color: var(--gold); font-size: 10px; letter-spacing: .22em; font-weight: 650; margin: 0 0 32px; }
-.content { height: auto; min-height: 190px; display: flex; align-items: center; justify-content: center; margin: 0; padding: 0; border: 0; background: transparent; color: var(--ink); font-family: Georgia, serif; font-size: clamp(26px, 3vw, 36px); line-height: 1.45; letter-spacing: -.025em; }
+.content { height: auto; min-height: 150px; display: flex; align-items: center; justify-content: center; margin: 0; padding: 0; border: 0; background: transparent; color: var(--ink); font-family: Georgia, serif; font-size: clamp(26px, 3vw, 36px); line-height: 1.45; letter-spacing: -.025em; }
 #joke { overflow-wrap: anywhere; }
 #joke img, #votes img { width: 28px; height: 28px; }
-.votes { height: auto; min-height: 100px; margin: 32px 0 18px; padding: 0; border: 0; background: transparent; color: var(--muted); font-size: 13px; }
+.votes { height: auto; min-height: 100px; margin: 32px 0 18px; padding: 0; border: 0; background: transparent; color: var(--muted); font-size: 18px; }
 #votes > div + div { display: flex; justify-content: center; gap: 10px; margin-top: 14px; }
 .vote-button { display: inline-flex; justify-content: center; align-items: center; width: 50px; height: 50px; margin: 0; padding: 0; font-size: 30px; border: 1px solid #ffffff15; border-radius: 50%; background: #ffffff05; transition: transform .16s, background .16s; }
 .vote-button:hover { transform: translateY(-3px); background: #ffffff12; }
@@ -260,4 +260,16 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px soli
 .leaderboard:not([open]) summary { padding: 16px 36px 16px 0; }
 @media (min-width: 851px) {
  .lounge:has(.leaderboard[open]) { grid-template-columns: minmax(0, 1fr) 330px; gap: 48px; }
+}
+
+/* Preserve the current joke while fetching; fade only at the actual swap. */
+.content { transition: height 260ms ease; }
+#joke { transition: opacity 160ms ease; }
+#joke.htmx-swapping { opacity: 0; }
+#joke.htmx-settling { opacity: 0; }
+#votes { transition: opacity 180ms ease; }
+.joke-loading #votes { opacity: .35; pointer-events: none; }
+#nextJokeButton { transition: opacity 160ms ease, background-color 160ms ease; }
+@media (prefers-reduced-motion: reduce) {
+ .content, #joke, #votes, #nextJokeButton { transition: none; }
 }

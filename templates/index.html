@@ -26,14 +26,15 @@
     <button
       id="nextJokeButton"
       hx-get="/joke"
+      hx-request='{"timeout":12000}'
       hx-target="#joke"
       hx-trigger="click, load"
       hx-disabled-elt="#nextJokeButton"
-      hx-swap="innerHTML">
+      hx-swap="innerHTML swap:160ms settle:180ms">
       Another joke
     </button>
   </div>
-  <p class="stage-note">Good jokes deserve company. Rate your favourite.</p>
+  <p class="stage-note" id="jokeStatus" role="status" aria-live="polite">Good jokes deserve company. Rate your favourite.</p>
   </section>
   <details class="leaderboard" id="leaderboard">
     <summary>
@@ -75,12 +76,62 @@
         document.getElementById('topJokes').textContent = 'Could not connect. Please try Refresh.';
       }
     });
-    document.getElementById('nextJokeButton').addEventListener('click', function() {
-      var jokeElement = document.getElementById('joke');
-      var votesElement = document.getElementById('votes');
-      jokeElement.innerHTML = '<img src="/static/spinner.gif" alt="Loading joke">';
-      votesElement.innerHTML = '';
+    const joke = document.getElementById('joke');
+    const votes = document.getElementById('votes');
+    const stage = document.querySelector('.joke-stage');
+    const content = document.querySelector('.content');
+    const nextButton = document.getElementById('nextJokeButton');
+    const jokeStatus = document.getElementById('jokeStatus');
+    const idleStatus = jokeStatus.textContent;
+    let heightTimer;
+
+    function restoreJokeControls() {
+      stage.classList.remove('joke-loading');
+      joke.removeAttribute('aria-busy');
+      votes.inert = false;
+      nextButton.disabled = false;
+      nextButton.textContent = 'Another joke';
+    }
+
+    function jokeRequestFailed(event) {
+      if (event.detail.elt !== nextButton) return;
+      clearTimeout(heightTimer);
+      restoreJokeControls();
+      content.style.height = '';
+      joke.classList.remove('htmx-swapping', 'htmx-settling');
+      jokeStatus.textContent = event.type === 'htmx:timeout'
+        ? 'That took too long. Please try again.'
+        : 'Could not fetch a joke. Check your connection and try again.';
+      // Replace the initial spinner only; preserve an existing joke on failure.
+      if (joke.querySelector('img')) joke.textContent = 'Your next laugh can wait a moment.';
+    }
+    ['htmx:sendError', 'htmx:timeout', 'htmx:responseError', 'htmx:sendAbort'].forEach(function(name) {
+      document.body.addEventListener(name, jokeRequestFailed);
     });
+
+    document.body.addEventListener('htmx:beforeRequest', function(event) {
+      if (event.detail.elt !== nextButton) return;
+      clearTimeout(heightTimer);
+      jokeStatus.textContent = 'Fetching another joke…';
+      nextButton.textContent = 'Loading…';
+      content.style.height = content.getBoundingClientRect().height + 'px';
+      stage.classList.add('joke-loading');
+      joke.setAttribute('aria-busy', 'true');
+      votes.inert = true;
+    });
+    document.body.addEventListener('htmx:afterSwap', function(event) {
+      if (event.detail.target !== joke) return;
+      // Keep the old height through loading, then ease to the new text height.
+      const minimum = parseFloat(getComputedStyle(content).minHeight) || 0;
+      content.style.height = Math.max(minimum, joke.scrollHeight) + 'px';
+      votes.innerHTML = '';
+      votes.inert = false;
+      restoreJokeControls();
+      jokeStatus.textContent = idleStatus;
+      heightTimer = setTimeout(function() { content.style.height = ''; }, 280);
+    });
+
+
   </script>
 
 </body>
